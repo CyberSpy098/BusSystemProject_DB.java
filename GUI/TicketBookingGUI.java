@@ -7,6 +7,9 @@ import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 
 public class TicketBookingGUI extends JFrame
 {
@@ -24,10 +27,10 @@ public class TicketBookingGUI extends JFrame
     private JLabel ToLabel;
     private JButton Bookbutton;
     private JLabel CNICLabel;
-    private DatePicker date;
     private JComboBox timebox;
     private JLabel datelabel;
     private JLabel timelabel;
+    private DatePicker date;
 
     public TicketBookingGUI()
     {
@@ -81,7 +84,6 @@ public class TicketBookingGUI extends JFrame
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
 
-
                 if (NametextField.getText().equals("")
                         || CNICField.getText().equals("")
                         || PhoneNumberField.getText().equals("")
@@ -100,29 +102,46 @@ public class TicketBookingGUI extends JFrame
                     if (FromBox.getSelectedItem() == ToBox.getSelectedItem())
                     {
                         JOptionPane.showMessageDialog(pannel, "Destination cannot be same!");
-                    } else
+                    }
+                    else
                     {
-                       /* HelpingTicketBookingClass.setName(NametextField.getText(), HelpingTicketBookingClass.getTicket());
-                        HelpingTicketBookingClass.setCNIC(CNICField.getText(), HelpingTicketBookingClass.getTicket());
-                        HelpingTicketBookingClass.setPhone_Number(PhoneNumberField.getText(), HelpingTicketBookingClass.getTicket());
-                        HelpingTicketBookingClass.setTime(timebox.getSelectedItem().toString(), HelpingTicketBookingClass.getTicket());
-                        HelpingTicketBookingClass.setTo(ToBox.getSelectedItem().toString(), HelpingTicketBookingClass.getTicket());
-                        HelpingTicketBookingClass.setFrom(FromBox.getSelectedItem().toString(), HelpingTicketBookingClass.getTicket());
-                        HelpingTicketBookingClass.setDate(date.getText(), HelpingTicketBookingClass.getTicket());
+                        String Name =NametextField.getText();
+                        String CNIC=CNICField.getText();
+                        String Phone_Number=PhoneNumberField.getText();
+                        String Source=FromBox.getSelectedItem().toString();
+                        String Destination=ToBox.getSelectedItem().toString();
+                        String Date = date.toString();
+                        String Time=timebox.getSelectedItem().toString();
+
+                        try {
+                            Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "online_BusReservation", "group");
+                            System.out.print("Connection Sucessful");
+                            String sql = "INSERT INTO Ticket_Booking(Ticket_id,customer_name ,CNIC ,Phone_Number,Departure ,Arrival ,Ticket_Date,Time) " +
+                            "VALUES(Ticket_id_seq.nextVal,?,?,?,?,?,?,?)";
+                            PreparedStatement pst = ((Connection) conn).prepareStatement(sql);
+                            pst.setString(1, Name);
+                            pst.setString(2, CNIC);
+                            pst.setString(3, Phone_Number);
+                            pst.setString(4, Source);
+                            pst.setString(5, Destination);
+                            pst.setString(6, Date);
+                            pst.setString(7, Time);
 
 
-                        HelpingTicketBookingClass.addTicket();*/
-                        JOptionPane.showMessageDialog(pannel, " Your ticket has been Booked!");
-                        NametextField.setText("");
-                        CNICField.setText("");
-                        PhoneNumberField.setText("");
-                        ToBox.setSelectedItem("");
-                        FromBox.setSelectedItem("");
-                        timebox.setSelectedItem("");
-                        date.setText("");
+                            pst.executeQuery();
+                            System.out.println("Data saved successfully!");
+                            NametextField.setText("");
+                            CNICField.setText("");
+                            PhoneNumberField.setText("");
+                            ToBox.setSelectedItem("");
+                            FromBox.setSelectedItem("");
+                            timebox.setSelectedItem("");
+                            date.setText("");
+                        } catch (Exception ex) {
+                            JOptionPane.showMessageDialog(pannel, ex);
+                        }
                     }
                 }
-
 
             }
         });

@@ -1,7 +1,6 @@
 package GUI;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -15,6 +14,9 @@ public class CustomerPannelGUI extends JFrame
 
     public CustomerPannelGUI()
     {
+        bookTicketButton.setFocusable(false);
+        myBookingsButton.setFocusable(false);
+        backButton.setFocusable(false);
         add(CustomerPannel);
         setBounds(550,200,850,550);
         setVisible(true);

@@ -70,10 +70,6 @@ public class LoginGUI extends JFrame
                 {
                     JOptionPane.showMessageDialog(null,ex);
                 }
-
-
-
-
             }
         });
 

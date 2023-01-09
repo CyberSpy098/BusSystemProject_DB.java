@@ -3,6 +3,10 @@ package GUI;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 public class UserLoginGUI extends JFrame
 {
@@ -33,23 +37,35 @@ public class UserLoginGUI extends JFrame
             @Override
             public void actionPerformed(ActionEvent actionEvent)
             {
-                if(UserField1.getText().equals("")||PasswordField2.getText().equals(""))
+                String userName =UserField1.getText();
+                String password = PasswordField2.getText();
+                try
                 {
-                    JOptionPane.showMessageDialog(pannel, "Please fill all fields!");
-                }
-                else
-                {
-                   /* for(int i=0;i<HelpingRegistration.getRegisterCount();i++)
-                    {
-                        if(Objects.equals(UserField1.getText(),HelpingRegistration.getRName(i))
-                                &&Objects.equals(PasswordField2.getText(),HelpingRegistration.getRPassword(i)))
-                        {
-                            HelpingRegistration.setIndex(i);
-                            new CustomerPannelGUI().setVisible(true);
-                            dispose();
-                        }
+                    Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","online_BusReservation","group");
+                    System.out.print("Connection Sucessful");
+                    PreparedStatement pst=conn.prepareStatement("Select * from USER_SIGNUP where cus_name=? and cus_password=?");
+                    pst.setString(1,userName);
+                    pst.setString(2,password);
+                    ResultSet rs=pst.executeQuery();
 
-                    }*/
+                    if(rs.next())
+                    {
+                        JOptionPane.showMessageDialog(pannel,"Successfully logged In");
+                        new CustomerPannelGUI().setVisible(true);
+                        dispose();
+                        UserField1.setText("");
+                        PasswordField2.setText("");
+                    }
+                    else
+                    {
+                        JOptionPane.showMessageDialog(pannel,"Invalid Credientials");
+                        UserField1.setText("");
+                        PasswordField2.setText("");
+                    }
+                }
+                catch(Exception ex)
+                {
+                    JOptionPane.showMessageDialog(pannel,ex);
                 }
             }
         });

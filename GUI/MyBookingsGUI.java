@@ -8,6 +8,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.*;
 
 public class MyBookingsGUI extends JFrame
 {
@@ -43,10 +44,26 @@ public class MyBookingsGUI extends JFrame
             @Override
             public void actionPerformed(ActionEvent actionEvent)
             {
-                int serial=Integer.parseInt(serialfield.getText());
-              //  HelpingTicketBookingClass.CancelBooking(Integer.parseInt(serialfield.getText()));
-                dispose();
-                new MyBookingsGUI().setVisible(true);
+                int Id=Integer.parseInt(serialfield.getText());
+                try {
+                    Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "online_BusReservation", "group");
+                    System.out.print("Connection Sucessful");
+                    // Create a statement
+                    String sql = "DELETE FROM Ticket_Booking WHERE ticket_id = ?";
+                    PreparedStatement pstmt = conn.prepareStatement(sql);
+
+                    pstmt.setInt(1, Id);
+
+                    // Execute the delete statement
+                    int rowDeleted = pstmt.executeUpdate();
+                    if (rowDeleted > 0) {
+                        System.out.println("A row has been deleted successfully!");
+                        dispose();
+                        new MyBookingsGUI().setVisible(true);
+                    }
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
         });
     }
@@ -55,42 +72,45 @@ public class MyBookingsGUI extends JFrame
     {
         // TODO: place custom component creation code here
         DefaultTableModel modell=new DefaultTableModel();
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "online_BusReservation", "group");
+            System.out.print("Connection Sucessful");
+            // Create a statement
+            Statement stmt = conn.createStatement();
 
-        modell.addColumn("Serial#");
-        modell.addColumn("Name");
-        modell.addColumn("CNIC#");
-        modell.addColumn("Contact#");
-        modell.addColumn("Date");
-        modell.addColumn("Time");
-        modell.addColumn("To");
-        modell.addColumn("From");
+            // Execute a select query
+            String sql = "SELECT * FROM Ticket_Booking";
+            ResultSet rs = stmt.executeQuery(sql);
 
-/*
-        for (int i = 0; i< HelpingTicketBookingClass.getTicket();i++)
-        {
-            String string0,string1,string2,string3,string4,string5,string6,string7;
+            // Get the metadata of the result set
+            ResultSetMetaData rsmd = rs.getMetaData();
 
-            //Storing Data
-            string0= String.valueOf(i);
-            string1=HelpingTicketBookingClass.getName(i);
-            string2=HelpingTicketBookingClass.getDate(i);
-            string3=HelpingTicketBookingClass.getCNIC(i);
-            string4=HelpingTicketBookingClass.getPhone_Number(i);
-            string5=HelpingTicketBookingClass.getTo(i);
-            string6=HelpingTicketBookingClass.getFrom(i);
-            string7=HelpingTicketBookingClass.getTime(i);
+            // Get the number of columns in the result set
+            int columnCount = rsmd.getColumnCount();
+            // Add the column names to the model
+            for (int i = 1; i <= columnCount; i++) {
+                modell.addColumn(rsmd.getColumnName(i));
+            }
 
+            // Add the rows to the model
+            while (rs.next()) {
+                Object[] row = new Object[columnCount];
+                for (int i = 1; i <= columnCount; i++) {
+                    row[i - 1] = rs.getObject(i);
+                }
+                modell.addRow(row);
+            }
 
-            String[] data={string0,string1,string3,string4,string2,string7,string5,string6};
-            modell.addRow(data);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(Pannel, ex);
         }
-*/
+
         table1=new JTable(modell);
         table1.setBackground(Color.white);
 
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
-
-        //Center Side
+        //Cent
+        // er Side
         DefaultTableCellRenderer Centerrendere=new DefaultTableCellRenderer();
         Centerrendere.setHorizontalAlignment(JLabel.CENTER);
         //Index
