@@ -6,6 +6,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.*;
 
 public class DeleteBus extends JFrame
 {
@@ -46,10 +47,25 @@ public class DeleteBus extends JFrame
                 public void actionPerformed(ActionEvent actionEvent)
                 {
                     int serial=Integer.parseInt(indexfield.getText());
-                    //HelpingAddBusClass.DeleteBus(Integer.parseInt(indexfield.getText()));
+                    try {
+                        Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "online_BusReservation", "group");
+                        System.out.print("Connection Sucessful");
+                        // Create a statement
+                        String sql = "DELETE FROM BUS WHERE bus_id = ?";
+                        PreparedStatement pstmt = conn.prepareStatement(sql);
 
-                    dispose();
-                    new DeleteBus().setVisible(true);
+                        pstmt.setInt(1, serial);
+
+                        // Execute the delete statement
+                        int rowDeleted = pstmt.executeUpdate();
+                        if (rowDeleted > 0) {
+                            System.out.println("A row has been deleted successfully!");
+                            dispose();
+                            new DeleteBus().setVisible(true);
+                        }
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
                 }
             });
         };
@@ -58,24 +74,39 @@ public class DeleteBus extends JFrame
     {
         // TODO: place custom component creation code here
         DefaultTableModel modell=new DefaultTableModel();
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "online_BusReservation", "group");
+            System.out.print("Connection Sucessful");
+            // Create a statement
+            Statement stmt = conn.createStatement();
 
-        modell.addColumn("Serial#");
-        modell.addColumn("Name");
-        modell.addColumn("Model");
-        modell.addColumn("Registration No");
+            // Execute a select query
+            String sql = "SELECT * FROM BUS";
+            ResultSet rs = stmt.executeQuery(sql);
 
-        /*for (int i = 0; i< HelpingAddBusClass.getcounter(); i++)
-        {
-            String s1,s2,s3,s4;
-            s1= String.valueOf(i);
-            s2=HelpingAddBusClass.getName(i);
-            s3=HelpingAddBusClass.getModel(i);
-            s4=HelpingAddBusClass.getRegistrationNO(i);
+            // Get the metadata of the result set
+            ResultSetMetaData rsmd = rs.getMetaData();
 
-            String[] data={s1,s2,s3,s4};
-            modell.addRow(data);
+            // Get the number of columns in the result set
+            int columnCount = rsmd.getColumnCount();
+            // Add the column names to the model
+            for (int i = 1; i <= columnCount; i++) {
+                modell.addColumn(rsmd.getColumnName(i));
+            }
+
+            // Add the rows to the model
+            while (rs.next()) {
+                Object[] row = new Object[columnCount];
+                for (int i = 1; i <= columnCount; i++) {
+                    row[i - 1] = rs.getObject(i);
+                }
+                modell.addRow(row);
+            }
         }
-*/
+
+        catch(Exception ex){
+            JOptionPane.showMessageDialog(panel, ex);
+        }
         showTable=new JTable(modell);
     }
 

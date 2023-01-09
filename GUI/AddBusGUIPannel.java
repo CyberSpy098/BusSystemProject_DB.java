@@ -4,6 +4,9 @@ import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 
 public class AddBusGUIPannel extends JFrame
 {
@@ -43,16 +46,36 @@ public class AddBusGUIPannel extends JFrame
             @Override
             public void actionPerformed(ActionEvent actionEvent)
             {
+                String Name=NameText.getText();
+                String ModelYear=Model.getText();
+                String regNo=regfield.getText();
                 if(NameText.getText().equals("")||Model.getText().equals("")||regfield.getText().equals(""))
                 {
                     JOptionPane.showMessageDialog(AddPannel, " Please fill all fields!");
                 }
                 else
                 {
-                    JOptionPane.showMessageDialog(AddPannel, "Bus has been Added!");
-                    NameText.setText("");
-                    Model.setText("");
-                    regfield.setText("");
+                    try {
+                        Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "online_BusReservation", "group");
+                        System.out.print("Connection Sucessful");
+                        String sql = "INSERT INTO BUS(bus_id,bus_name,bus_no,bus_modelYear) VALUES(bus_id_seq.nextVal,?,?,?)";
+                        PreparedStatement pst = conn.prepareStatement(sql);
+
+                        pst.setString(1, Name);
+                        pst.setString(2, ModelYear);
+                        pst.setString(3, regNo);
+
+
+
+                        pst.executeQuery();
+                        System.out.println("Data saved successfully!");
+                        JOptionPane.showMessageDialog(AddPannel, "Bus has been Added!");
+                        NameText.setText("");
+                        Model.setText("");
+                        regfield.setText("");
+                    } catch (Exception ex) {
+                        JOptionPane.showMessageDialog(AddPannel, ex);
+                    }
                 }
 
 

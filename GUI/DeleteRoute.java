@@ -4,6 +4,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.*;
 
 public class DeleteRoute extends JFrame
 {
@@ -39,37 +40,67 @@ public class DeleteRoute extends JFrame
         deleteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                int serial=Integer.parseInt(indexField.getText());
-                //HelpingAddRouteClass.DeleteRoute(Integer.parseInt(indexField.getText()));
-                dispose();
-                new DeleteRoute().setVisible(true);
+                int Id=Integer.parseInt(indexField.getText());
+                try {
+                    Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "online_BusReservation", "group");
+                    System.out.print("Connection Sucessful");
+                    // Create a statement
+                    String sql = "DELETE FROM Routes WHERE route_id = ?";
+                    PreparedStatement pstmt = conn.prepareStatement(sql);
+
+                    pstmt.setInt(1, Id);
+
+                    // Execute the delete statement
+                    int rowDeleted = pstmt.executeUpdate();
+                    if (rowDeleted > 0) {
+                        System.out.println("A row has been deleted successfully!");
+                        dispose();
+                        new DeleteBus().setVisible(true);
+                    }
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
 
             }
         });
     }
 
-    private void createUIComponents()
-    {
+    private void createUIComponents() throws SQLException {
         // TODO: place custom component creation code here
-        DefaultTableModel modell=new DefaultTableModel();
-        modell.addColumn("Index");
-        modell.addColumn("Source");
-        modell.addColumn("Destination");
+        DefaultTableModel modell = new DefaultTableModel();
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "online_BusReservation", "group");
+            System.out.print("Connection Sucessful");
+            // Create a statement
+            Statement stmt = conn.createStatement();
 
+            // Execute a select query
+            String sql = "SELECT * FROM Routes ";
+            ResultSet rs = stmt.executeQuery(sql);
 
-        /*for (int i = 0; i< HelpingAddRouteClass.getRoute(); i++)
-        {
-            String string0,string1,string2;
-            //Storing Data
-            string0= String.valueOf(i);
-            string1=HelpingAddRouteClass.getSource(i);
-            string2=HelpingAddRouteClass.getDestination(i);
+            // Get the metadata of the result set
+            ResultSetMetaData rsmd = rs.getMetaData();
 
+            // Get the number of columns in the result set
+            int columnCount = rsmd.getColumnCount();
+            // Add the column names to the model
+            for (int i = 1; i <= columnCount; i++) {
+                modell.addColumn(rsmd.getColumnName(i));
+            }
 
-            String[] data={string0,string1,string2};
-            modell.addRow(data);
+            // Add the rows to the model
+            while (rs.next()) {
+                Object[] row = new Object[columnCount];
+                for (int i = 1; i <= columnCount; i++) {
+                    row[i - 1] = rs.getObject(i);
+                }
+                modell.addRow(row);
+            }
         }
-*/
+
+        catch(Exception ex){
+            JOptionPane.showMessageDialog(pannel, ex);
+        }
         table1=new JTable(modell);
     }
 }

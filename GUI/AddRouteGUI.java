@@ -5,6 +5,9 @@ import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 
 public class AddRouteGUI extends JFrame
 {
@@ -13,16 +16,16 @@ public class AddRouteGUI extends JFrame
     private JButton Addbutton;
     private JLabel Destinationabel;
     private JLabel SourceLabel;
-    private JTextField textField1;
-    private JTextField textField2;
+    private JTextField Sourcefield;
+    private JTextField destinationfield;
     private JButton backButton;
 
 
     public AddRouteGUI()
     {
         Border line = BorderFactory.createLineBorder(Color.white);
-       SourceLabel.setBorder(line);
-       Destinationabel.setBorder(line);
+        SourceLabel.setBorder(line);
+        Destinationabel.setBorder(line);
         Addbutton.setFocusable(false);
         backButton.setFocusable(false);
         add(AddRoutePannel);
@@ -33,24 +36,31 @@ public class AddRouteGUI extends JFrame
 
         Addbutton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent actionEvent)
-            {
-                if(textField1.getText().equals("")||textField2.getText().equals(""))
-                {
+            public void actionPerformed(ActionEvent actionEvent) {
+                String Source = Sourcefield.getText();
+                String Destination = destinationfield.getText();
+                if (Sourcefield.getText().equals("") || destinationfield.getText().equals("")) {
                     JOptionPane.showMessageDialog(AddRoutePannel, " Please fill all fields!");
-                }
-                else
-                {
-                   // HelpingAddRouteClass.setSource(textField1.getText(),HelpingAddRouteClass.getRoute());
-                    //HelpingAddRouteClass.setDestination(textField2.getText(),HelpingAddRouteClass.getRoute());
-                    //HelpingAddRouteClass.addRoute();
+                } else {
+                    try {
+                        Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "online_BusReservation", "group");
+                        System.out.print("Connection Sucessful");
+                        String sql = "INSERT INTO Routes(route_id,route_source,route_destination) VALUES(route_id_seq.nextVal,?,?)";
+                        PreparedStatement pst = conn.prepareStatement(sql);
 
-                    JOptionPane.showMessageDialog(AddRoutePannel, "Bus has been Added!");
-                    textField1.setText("");
-                    textField2.setText("");
+                        pst.setString(1, Source);
+                        pst.setString(2, Destination);
+
+
+                        pst.executeQuery();
+                        System.out.println("Data saved successfully!");
+                        JOptionPane.showMessageDialog(AddRoutePannel, "Route has been Added!");
+                        Sourcefield.setText("");
+                        destinationfield.setText("");
+                    } catch (Exception ex) {
+                        JOptionPane.showMessageDialog(AddRoutePannel, ex);
+                    }
                 }
-               textField1.setText("");
-               textField2.setText("");
             }
         });
         backButton.addActionListener(new ActionListener() {
