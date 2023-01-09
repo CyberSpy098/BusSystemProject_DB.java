@@ -1,13 +1,12 @@
 package GUI;
 
-import HelpingClasses.HelpingAdminLogin;
 
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Objects;
+import java.sql.*;
 
 
 public class LoginGUI extends JFrame
@@ -20,6 +19,10 @@ public class LoginGUI extends JFrame
     private JLabel WrongPassField;
     private JButton backButton;
     private JLabel Password;
+
+    //Connection con=null;
+    //PreparedStatement pst =null;
+    //ResultSet rs = null;
 
 
     public LoginGUI()
@@ -43,7 +46,7 @@ public class LoginGUI extends JFrame
             public void actionPerformed(ActionEvent actionEvent)
             {
 
-                if (Objects.equals(HelpingAdminLogin.getAdminUserName(), Usernamefield1.getText()) && Objects.equals(HelpingAdminLogin.getAdminPass(),passwordField1.getText()))
+              /*  if (Objects.equals(Usernamefield1.getText()),"Hamza") && Objects.equals(passwordField1.getText()),"12345")
                 {
                    new AdminGUIPannel().setVisible(true);
                    dispose();
@@ -55,6 +58,37 @@ public class LoginGUI extends JFrame
                 else
                 {
                     JOptionPane.showMessageDialog(Login, "Username/ Password incorrect!");
+                }*/
+                String userName =Usernamefield1.getText();
+                String password = passwordField1.getText();
+                try
+                {
+                    Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","online_BusReservation","group");
+                    System.out.print("Connection Sucessful");
+                    //String sql="Select * from LOGIN where username='Usernamefield1.getText()' and password='passwordField1.getText()'";
+                    PreparedStatement pst=conn.prepareStatement("Select * from login where username=? and password=?");
+                    pst.setString(1,userName);
+                    pst.setString(2,password);
+                    ResultSet rs=pst.executeQuery();
+
+                    if(rs.next())
+                    {
+                        JOptionPane.showMessageDialog(Loginpannel,"Success");
+                        new AdminGUIPannel().setVisible(true);
+                        dispose();
+                        Usernamefield1.setText("");
+                        passwordField1.setText("");
+                    }
+                    else
+                    {
+                        JOptionPane.showMessageDialog(Loginpannel,"Invalid Credientials");
+                        Usernamefield1.setText("");
+                        passwordField1.setText("");
+                    }
+                }
+                catch(Exception ex)
+                {
+                    JOptionPane.showMessageDialog(null,ex);
                 }
 
 

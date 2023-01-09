@@ -1,6 +1,5 @@
 package GUI;
 
-import HelpingClasses.HelpingTicketBookingClass;
 import com.github.lgooddatepicker.components.DatePicker;
 
 import javax.swing.*;
@@ -103,7 +102,7 @@ public class TicketBookingGUI extends JFrame
                         JOptionPane.showMessageDialog(pannel, "Destination cannot be same!");
                     } else
                     {
-                        HelpingTicketBookingClass.setName(NametextField.getText(), HelpingTicketBookingClass.getTicket());
+                       /* HelpingTicketBookingClass.setName(NametextField.getText(), HelpingTicketBookingClass.getTicket());
                         HelpingTicketBookingClass.setCNIC(CNICField.getText(), HelpingTicketBookingClass.getTicket());
                         HelpingTicketBookingClass.setPhone_Number(PhoneNumberField.getText(), HelpingTicketBookingClass.getTicket());
                         HelpingTicketBookingClass.setTime(timebox.getSelectedItem().toString(), HelpingTicketBookingClass.getTicket());
@@ -112,7 +111,7 @@ public class TicketBookingGUI extends JFrame
                         HelpingTicketBookingClass.setDate(date.getText(), HelpingTicketBookingClass.getTicket());
 
 
-                        HelpingTicketBookingClass.addTicket();
+                        HelpingTicketBookingClass.addTicket();*/
                         JOptionPane.showMessageDialog(pannel, " Your ticket has been Booked!");
                         NametextField.setText("");
                         CNICField.setText("");

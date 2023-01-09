@@ -1,6 +1,4 @@
 package GUI;
-
-import HelpingClasses.HelpingAddBusClass;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
@@ -51,11 +49,6 @@ public class AddBusGUIPannel extends JFrame
                 }
                 else
                 {
-                    HelpingAddBusClass.setName(NameText.getText(),HelpingAddBusClass.getcounter());
-                    HelpingAddBusClass.setModel(Model.getText(),HelpingAddBusClass.getcounter());
-                    HelpingAddBusClass.setRegistrationNO(regfield.getText(),HelpingAddBusClass.getcounter());
-                    HelpingAddBusClass.addCounter();
-
                     JOptionPane.showMessageDialog(AddPannel, "Bus has been Added!");
                     NameText.setText("");
                     Model.setText("");

@@ -1,11 +1,7 @@
 package GUI;
 
-import HelpingClasses.HelpingAddBusClass;
-import HelpingClasses.HelpingAddRouteClass;
-
 import javax.swing.*;
 import javax.swing.border.Border;
-import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -45,9 +41,9 @@ public class AddRouteGUI extends JFrame
                 }
                 else
                 {
-                    HelpingAddRouteClass.setSource(textField1.getText(),HelpingAddRouteClass.getRoute());
-                    HelpingAddRouteClass.setDestination(textField2.getText(),HelpingAddRouteClass.getRoute());
-                    HelpingAddRouteClass.addRoute();
+                   // HelpingAddRouteClass.setSource(textField1.getText(),HelpingAddRouteClass.getRoute());
+                    //HelpingAddRouteClass.setDestination(textField2.getText(),HelpingAddRouteClass.getRoute());
+                    //HelpingAddRouteClass.addRoute();
 
                     JOptionPane.showMessageDialog(AddRoutePannel, "Bus has been Added!");
                     textField1.setText("");

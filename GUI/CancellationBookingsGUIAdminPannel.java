@@ -1,6 +1,5 @@
 package GUI;
 
-import HelpingClasses.HelpingCancelTicket;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
@@ -50,7 +49,7 @@ public class CancellationBookingsGUIAdminPannel extends JFrame
         modell.addColumn("From");
 
 
-        for (int i = 0; i< HelpingCancelTicket.getTicket(); i++)
+       /* for (int i = 0; i< HelpingCancelTicket.getTicket(); i++)
         {
             String string0,string1,string2,string3,string4,string5,string6;
 
@@ -66,7 +65,7 @@ public class CancellationBookingsGUIAdminPannel extends JFrame
             String[] data={string0,string1,string2,string3,string4,string5,string6};
             modell.addRow(data);
         }
-
+*/
         table1=new JTable(modell);
         table1.setBackground(Color.yellow);
 

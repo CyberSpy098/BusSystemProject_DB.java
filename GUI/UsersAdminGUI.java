@@ -1,8 +1,5 @@
 package GUI;
 
-import HelpingClasses.HelpingRegistration;
-import HelpingClasses.HelpingTicketBookingClass;
-
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -43,7 +40,7 @@ public class UsersAdminGUI extends JFrame
         modell.addColumn("Email");
         modell.addColumn("Password");
 
-
+/*
         for (int i = 0; i< HelpingRegistration.getRegisterCount(); i++)
         {
             String string0,string1,string2,string3,string4,string5;
@@ -59,7 +56,7 @@ public class UsersAdminGUI extends JFrame
 
             String[] data={string0,string1,string2,string3,string4,string5};
             modell.addRow(data);
-        }
+        }*/
 
         table1=new JTable(modell);
         table1.setBackground(Color.white);

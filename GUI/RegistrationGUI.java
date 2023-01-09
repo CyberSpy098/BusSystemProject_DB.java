@@ -1,8 +1,5 @@
 package GUI;
 
-import HelpingClasses.HelpingRegistration;
-import HelpingClasses.HelpingTicketBookingClass;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -53,7 +50,7 @@ public class RegistrationGUI extends JFrame {
                 }
                 else
                 {
-                        HelpingRegistration.setRName(Namefield.getText(), HelpingRegistration.getRegisterCount());
+                        /*HelpingRegistration.setRName(Namefield.getText(), HelpingRegistration.getRegisterCount());
                         HelpingRegistration.setRContact(ContactField2.getText(), HelpingRegistration.getRegisterCount());
                         HelpingRegistration.setRAddress(AddressField3.getText(), HelpingRegistration.getRegisterCount());
                         HelpingRegistration.setREmail(emailField4.getText(),HelpingRegistration.getRegisterCount());
@@ -65,7 +62,7 @@ public class RegistrationGUI extends JFrame {
                         ContactField2.setText("");
                         AddressField3.setText("");
                         emailField4.setText("");
-                        passwordfield.setText("");
+                        passwordfield.setText("");*/
                     }
             }
         });

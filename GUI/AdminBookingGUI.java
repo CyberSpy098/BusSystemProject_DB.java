@@ -1,7 +1,4 @@
 package GUI;
-
-import HelpingClasses.HelpingTicketBookingClass;
-
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -36,7 +33,7 @@ public class AdminBookingGUI extends JFrame
             public void actionPerformed(ActionEvent actionEvent)
             {
                 int serial=Integer.parseInt(textField1.getText());
-                HelpingTicketBookingClass.CancelBooking(Integer.parseInt(textField1.getText()));
+                //HelpingTicketBookingClass.CancelBooking(Integer.parseInt(textField1.getText()));
                 dispose();
                 new AdminBookingGUI().setVisible(true);
             }
@@ -58,7 +55,7 @@ public class AdminBookingGUI extends JFrame
         modell.addColumn("From");
 
 
-        for (int i = 0; i< HelpingTicketBookingClass.getTicket(); i++)
+       /* for (int i = 0; i< HelpingTicketBookingClass.getTicket(); i++)
         {
             String string0,string1,string2,string3,string4,string5,string6,string7;
 
@@ -76,7 +73,7 @@ public class AdminBookingGUI extends JFrame
             String[] data={string0,string1,string3,string4,string2,string7,string5,string6};
             modell.addRow(data);
         }
-
+*/
         table1=new JTable(modell);
         table1.setBackground(Color.white);
 

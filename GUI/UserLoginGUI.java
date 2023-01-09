@@ -1,11 +1,8 @@
 package GUI;
 
-import HelpingClasses.HelpingRegistration;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Objects;
 
 public class UserLoginGUI extends JFrame
 {
@@ -42,7 +39,7 @@ public class UserLoginGUI extends JFrame
                 }
                 else
                 {
-                    for(int i=0;i<HelpingRegistration.getRegisterCount();i++)
+                   /* for(int i=0;i<HelpingRegistration.getRegisterCount();i++)
                     {
                         if(Objects.equals(UserField1.getText(),HelpingRegistration.getRName(i))
                                 &&Objects.equals(PasswordField2.getText(),HelpingRegistration.getRPassword(i)))
@@ -52,7 +49,7 @@ public class UserLoginGUI extends JFrame
                             dispose();
                         }
 
-                    }
+                    }*/
                 }
             }
         });

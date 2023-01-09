@@ -1,7 +1,5 @@
 package GUI;
 
-import HelpingClasses.HelpingRegistration;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -47,14 +45,14 @@ public class AdminRegistrationGUI extends JFrame {
                 }
                 else
                 {
-                    HelpingRegistration.setRName(UserField1.getText(), HelpingRegistration.getRegisterCount());
+                    /*HelpingRegistration.setRName(UserField1.getText(), HelpingRegistration.getRegisterCount());
                     HelpingRegistration.setRContact(ContactField2.getText(), HelpingRegistration.getRegisterCount());
                     HelpingRegistration.setRAddress(textField4.getText(), HelpingRegistration.getRegisterCount());
                     HelpingRegistration.setRPassword(textField4.getText(),HelpingRegistration.getRegisterCount());
                     HelpingRegistration.setREmail(PasswordField5.getText(),HelpingRegistration.getRegisterCount());
 
 
-                    HelpingRegistration.AddRegisterCount();
+                    HelpingRegistration.AddRegisterCount();*/
                     JOptionPane.showMessageDialog(Pannel, " Registered sucessfully!");
                     UserField1.setText("");
                     ContactField2.setText("");

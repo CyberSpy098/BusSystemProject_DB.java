@@ -1,8 +1,5 @@
 package GUI;
 
-import HelpingClasses.HelpingAddBusClass;
-import HelpingClasses.HelpingAddRouteClass;
-
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
@@ -43,7 +40,7 @@ public class DeleteRoute extends JFrame
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 int serial=Integer.parseInt(indexField.getText());
-                HelpingAddRouteClass.DeleteRoute(Integer.parseInt(indexField.getText()));
+                //HelpingAddRouteClass.DeleteRoute(Integer.parseInt(indexField.getText()));
                 dispose();
                 new DeleteRoute().setVisible(true);
 
@@ -60,7 +57,7 @@ public class DeleteRoute extends JFrame
         modell.addColumn("Destination");
 
 
-        for (int i = 0; i< HelpingAddRouteClass.getRoute(); i++)
+        /*for (int i = 0; i< HelpingAddRouteClass.getRoute(); i++)
         {
             String string0,string1,string2;
             //Storing Data
@@ -72,7 +69,7 @@ public class DeleteRoute extends JFrame
             String[] data={string0,string1,string2};
             modell.addRow(data);
         }
-
+*/
         table1=new JTable(modell);
     }
 }

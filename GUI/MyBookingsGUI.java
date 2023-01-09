@@ -1,6 +1,5 @@
 package GUI;
 
-import HelpingClasses.HelpingTicketBookingClass;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -45,7 +44,7 @@ public class MyBookingsGUI extends JFrame
             public void actionPerformed(ActionEvent actionEvent)
             {
                 int serial=Integer.parseInt(serialfield.getText());
-                HelpingTicketBookingClass.CancelBooking(Integer.parseInt(serialfield.getText()));
+              //  HelpingTicketBookingClass.CancelBooking(Integer.parseInt(serialfield.getText()));
                 dispose();
                 new MyBookingsGUI().setVisible(true);
             }
@@ -66,7 +65,7 @@ public class MyBookingsGUI extends JFrame
         modell.addColumn("To");
         modell.addColumn("From");
 
-
+/*
         for (int i = 0; i< HelpingTicketBookingClass.getTicket();i++)
         {
             String string0,string1,string2,string3,string4,string5,string6,string7;
@@ -85,7 +84,7 @@ public class MyBookingsGUI extends JFrame
             String[] data={string0,string1,string3,string4,string2,string7,string5,string6};
             modell.addRow(data);
         }
-
+*/
         table1=new JTable(modell);
         table1.setBackground(Color.white);
 

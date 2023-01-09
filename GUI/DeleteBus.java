@@ -1,8 +1,5 @@
 package GUI;
 
-import HelpingClasses.HelpingAddBusClass;
-import HelpingClasses.HelpingTicketBookingClass;
-
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.table.DefaultTableModel;
@@ -49,7 +46,7 @@ public class DeleteBus extends JFrame
                 public void actionPerformed(ActionEvent actionEvent)
                 {
                     int serial=Integer.parseInt(indexfield.getText());
-                    HelpingAddBusClass.DeleteBus(Integer.parseInt(indexfield.getText()));
+                    //HelpingAddBusClass.DeleteBus(Integer.parseInt(indexfield.getText()));
 
                     dispose();
                     new DeleteBus().setVisible(true);
@@ -67,7 +64,7 @@ public class DeleteBus extends JFrame
         modell.addColumn("Model");
         modell.addColumn("Registration No");
 
-        for (int i = 0; i< HelpingAddBusClass.getcounter(); i++)
+        /*for (int i = 0; i< HelpingAddBusClass.getcounter(); i++)
         {
             String s1,s2,s3,s4;
             s1= String.valueOf(i);
@@ -78,7 +75,7 @@ public class DeleteBus extends JFrame
             String[] data={s1,s2,s3,s4};
             modell.addRow(data);
         }
-
+*/
         showTable=new JTable(modell);
     }
 
