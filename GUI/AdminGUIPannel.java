@@ -10,27 +10,27 @@ public class AdminGUIPannel extends JFrame
     private JButton addBusButton;
     private JButton addRouteButton;
     private JButton deleteRouteButton;
-    private JButton Bookings;
     private JButton backButton;
     private JPanel AdminPannel;
     private JButton deleteBusButton;
-    private JButton button1;
+    private JButton bookings;
     private JButton registrationButton;
     private JButton usersButton;
 
     public AdminGUIPannel()
     {
-        Bookings.setFocusable(false);
+        //Bookings.setFocusable(false);
         addBusButton.setFocusable(false);
         addRouteButton.setFocusable(false);
         deleteBusButton.setFocusable(false);
         deleteRouteButton.setFocusable(false);
-        Bookings.setFocusable(false);
+        //Bookings.setFocusable(false);
         backButton.setFocusable(false);
+        bookings.setFocusable(false);
 
 
         add(AdminPannel);
-        setBounds(550,200,850,550);
+        setBounds(400,150,850,550);
         setTitle("Pakistan Express");
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -60,16 +60,6 @@ public class AdminGUIPannel extends JFrame
 
             }
         });
-        Bookings.addActionListener(new ActionListener()
-        {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent)
-            {
-                new CancellationBookingsGUIAdminPannel().setVisible(true);
-                dispose();
-            }
-        });
-
         deleteBusButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
@@ -86,7 +76,7 @@ public class AdminGUIPannel extends JFrame
 
             }
         });
-        button1.addActionListener(new ActionListener() {
+        bookings.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 new AdminBookingGUI().setVisible(true);
@@ -97,7 +87,7 @@ public class AdminGUIPannel extends JFrame
             @Override
             public void actionPerformed(ActionEvent actionEvent)
             {
-                new RegistrationGUI().setVisible(true);
+                new AdminRegistrationGUI().setVisible(true);
                 dispose();
             }
         });

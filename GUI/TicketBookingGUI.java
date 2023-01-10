@@ -7,9 +7,7 @@ import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
+import java.sql.*;
 
 public class TicketBookingGUI extends JFrame
 {
@@ -34,10 +32,11 @@ public class TicketBookingGUI extends JFrame
 
     public TicketBookingGUI()
     {
+
         backbutton.setFocusable(false);
         Bookbutton.setFocusable(false);
         add(pannel);
-        setBounds(550,200,850,550);
+        setBounds(400,150,850,550);
 
         Border line = BorderFactory.createLineBorder(Color.white);
         Namelabel.setBorder(line);
@@ -47,6 +46,9 @@ public class TicketBookingGUI extends JFrame
         PhoneNumberLabel.setBorder(line);
         datelabel.setBorder(line);
         timelabel.setBorder(line);
+        fillComboBox();
+        destinationCombo();
+       // destinationCombo();
 
 
 
@@ -55,19 +57,21 @@ public class TicketBookingGUI extends JFrame
         timebox.addItem("Select");
         timebox.addItem("9:00AM");
         timebox.addItem("11:00PM");
+//
+//        FromBox.addItem("Select");
+//        FromBox.addItem("Islamabad");
+//        FromBox.addItem("Peshawar");
+//        FromBox.addItem("Karachi");
+//        FromBox.addItem("Lahore");
+//
+//        ToBox.addItem("Select");
+//        ToBox.addItem("Lahore");
+//        ToBox.addItem("Karachi");
+//        ToBox.addItem("Islamabad");
+//        ToBox.addItem("Peshawar");
 
-        FromBox.addItem("Select");
-        FromBox.addItem("Islamabad");
-        FromBox.addItem("Peshawar");
-        FromBox.addItem("Karachi");
-        FromBox.addItem("Lahore");
-
-        ToBox.addItem("Select");
-        ToBox.addItem("Lahore");
-        ToBox.addItem("Karachi");
-        ToBox.addItem("Islamabad");
-        ToBox.addItem("Peshawar");
         //setVisible(true);
+        // public void fill_comboBox() {
 
 
 
@@ -83,7 +87,6 @@ public class TicketBookingGUI extends JFrame
         {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-
                 if (NametextField.getText().equals("")
                         || CNICField.getText().equals("")
                         || PhoneNumberField.getText().equals("")
@@ -137,17 +140,61 @@ public class TicketBookingGUI extends JFrame
                             FromBox.setSelectedItem("");
                             timebox.setSelectedItem("");
                             date.setText("");
+
+                            new PaymentGUI().setVisible(true);
+                            dispose();
                         } catch (Exception ex) {
                             JOptionPane.showMessageDialog(pannel, ex);
                         }
                     }
                 }
 
+
             }
         });
+
     }
 
+    public void fillComboBox()
+    {
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "online_BusReservation", "group");
+            System.out.print("Connection Sucessful");
+            String sql="Select ROUTE_SOURCE from ROUTES";
+            PreparedStatement pst = ((Connection) conn).prepareStatement(sql);
+            ResultSet rs=pst.executeQuery();
+            while (rs.next()) {
+                String data = rs.getString("ROUTE_SOURCE");
+                ToBox.addItem(data);
+            }
+            System.out.println("Data saved successfully!");
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+    public void destinationCombo()
+    {
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "online_BusReservation", "group");
+            System.out.print("Connection Sucessful");
+
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("Select ROUTE_DESTINATION from ROUTES");
+            while (rs.next()) {
+                String data = rs.getString("ROUTE_DESTINATION");
+                FromBox.addItem(data);
+            }
+
+            System.out.println("Data saved successfully!");
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
     private void createUIComponents() {
         // TODO: place custom component creation code here
+
+
     }
 }

@@ -25,7 +25,7 @@ public class LoginGUI extends JFrame
         Login.setFocusable(false);
         backButton.setFocusable(false);
         add(Loginpannel);
-        setBounds(550,200,850,550);
+        setBounds(400,150,850,550);
         Border line = BorderFactory.createLineBorder(Color.white);
         Username.setBorder(line);
         Password.setBorder(line);
@@ -54,8 +54,9 @@ public class LoginGUI extends JFrame
                     if(rs.next())
                     {
                         JOptionPane.showMessageDialog(Loginpannel,"Success");
-                        new AdminGUIPannel().setVisible(true);
+
                         dispose();
+                        new AdminGUIPannel().setVisible(true);
                         Usernamefield1.setText("");
                         passwordField1.setText("");
                     }

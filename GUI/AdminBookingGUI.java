@@ -19,7 +19,7 @@ public class AdminBookingGUI extends JFrame
 
     public AdminBookingGUI()
     {
-        setBounds(550,200,850,650);
+        setBounds(400,150,850,550);
         add(Pannel);
 
 
@@ -135,6 +135,5 @@ public class AdminBookingGUI extends JFrame
         table1.getColumnModel().getColumn(7).setMinWidth(100);
         table1.getColumnModel().getColumn(7).setMaxWidth(100);
         table1.getColumnModel().getColumn(7).setCellRenderer(Centerrendere);
-
     }
 }

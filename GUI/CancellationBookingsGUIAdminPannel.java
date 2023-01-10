@@ -16,7 +16,7 @@ public class CancellationBookingsGUIAdminPannel extends JFrame
     public CancellationBookingsGUIAdminPannel()
     {
         add(Bookingpannel);
-        setBounds(550,200,850,550);
+        setBounds(400,150,850,550);
         setBackground(Color.WHITE);
         setTitle("Welcome to Pakistan Express");
 

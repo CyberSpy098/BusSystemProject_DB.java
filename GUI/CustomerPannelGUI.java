@@ -18,7 +18,7 @@ public class CustomerPannelGUI extends JFrame
         myBookingsButton.setFocusable(false);
         backButton.setFocusable(false);
         add(CustomerPannel);
-        setBounds(550,200,850,550);
+        setBounds(400,150,850,550);
         setVisible(true);
         setTitle("Welcome to Pakistan Express");
         bookTicketButton.addActionListener(new ActionListener() {
@@ -39,8 +39,10 @@ public class CustomerPannelGUI extends JFrame
         myBookingsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+                
               new MyBookingsGUI().setVisible(true);
               dispose();
+
             }
         });
     }

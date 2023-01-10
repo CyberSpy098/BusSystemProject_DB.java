@@ -22,7 +22,7 @@ public class WelcomeGUI extends JFrame
 
         add(welcomepannel);
         setBackground(Color.WHITE);
-        setBounds(550,200,850,550);
+        setBounds(400,150,850,550);
 
         setTitle("Welcome to Pakistan Express");
         adminButton.addActionListener(new ActionListener()

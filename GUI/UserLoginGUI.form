@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="GUI.UserLoginGUI">
-  <grid id="27dc6" binding="pannel" layout-manager="GridLayoutManager" row-count="8" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="pannel" layout-manager="GridLayoutManager" row-count="7" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
       <xy x="20" y="20" width="754" height="400"/>
     </constraints>
     <properties>
-      <background color="-14013966"/>
+      <background color="-12490271"/>
     </properties>
     <border type="none"/>
     <children>
-      <grid id="a02ab" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="a02ab" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
           <grid row="0" column="0" row-span="1" col-span="4" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -20,19 +20,26 @@
         </properties>
         <border type="none"/>
         <children>
+          <vspacer id="6c257">
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+            </constraints>
+          </vspacer>
           <component id="e2d1c" class="javax.swing.JLabel">
             <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <font name="Consolas" size="36" style="1"/>
               <foreground color="-2171170"/>
+              <horizontalAlignment value="0"/>
+              <horizontalTextPosition value="0"/>
               <text value="Pakistan Express"/>
             </properties>
           </component>
-          <vspacer id="6c257">
+          <vspacer id="473cb">
             <constraints>
-              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
             </constraints>
           </vspacer>
         </children>
@@ -45,7 +52,9 @@
             <maximum-size width="210" height="35"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <font name="Consolas" size="18" style="0"/>
+        </properties>
       </component>
       <component id="f0a3" class="javax.swing.JButton" binding="loginButton" default-binding="true">
         <constraints>
@@ -60,7 +69,7 @@
           <text value="Login"/>
         </properties>
       </component>
-      <component id="f9ccd" class="javax.swing.JButton" binding="backButton" default-binding="true">
+      <component id="66705" class="javax.swing.JButton" binding="registrationButton" default-binding="true">
         <constraints>
           <grid row="5" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false">
             <minimum-size width="210" height="35"/>
@@ -70,20 +79,7 @@
         </constraints>
         <properties>
           <font name="Consolas" size="20" style="1"/>
-          <text value="Back"/>
-        </properties>
-      </component>
-      <component id="66705" class="javax.swing.JButton" binding="registrationButton" default-binding="true">
-        <constraints>
-          <grid row="6" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false">
-            <minimum-size width="210" height="35"/>
-            <preferred-size width="210" height="35"/>
-            <maximum-size width="210" height="35"/>
-          </grid>
-        </constraints>
-        <properties>
-          <font name="Consolas" size="20" style="1"/>
-          <text value="Registration"/>
+          <text value="Sign Up"/>
         </properties>
       </component>
       <hspacer id="c1c42">
@@ -99,9 +95,11 @@
             <maximum-size width="210" height="35"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <font name="Consolas" size="18" style="0"/>
+        </properties>
       </component>
-      <component id="40ede" class="javax.swing.JLabel">
+      <component id="40ede" class="javax.swing.JLabel" binding="Password">
         <constraints>
           <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
             <minimum-size width="210" height="35"/>
@@ -111,7 +109,7 @@
         </constraints>
         <properties>
           <font name="Consolas" size="24" style="1"/>
-          <foreground color="-16777216"/>
+          <foreground color="-1"/>
           <horizontalAlignment value="0"/>
           <text value="Password"/>
         </properties>
@@ -121,7 +119,17 @@
           <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
       </hspacer>
-      <component id="5e3e9" class="javax.swing.JLabel">
+      <vspacer id="90142">
+        <constraints>
+          <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <vspacer id="bfa6d">
+        <constraints>
+          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <component id="5e3e9" class="javax.swing.JLabel" binding="username">
         <constraints>
           <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false">
             <minimum-size width="210" height="35"/>
@@ -131,22 +139,25 @@
         </constraints>
         <properties>
           <font name="Consolas" size="24" style="1"/>
-          <foreground color="-16645630"/>
+          <foreground color="-1"/>
           <horizontalAlignment value="0"/>
           <text value="Username"/>
           <verticalAlignment value="0"/>
         </properties>
       </component>
-      <vspacer id="90142">
+      <component id="f9ccd" class="javax.swing.JButton" binding="backButton" default-binding="true">
         <constraints>
-          <grid row="7" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+          <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="210" height="35"/>
+            <preferred-size width="210" height="35"/>
+            <maximum-size width="210" height="35"/>
+          </grid>
         </constraints>
-      </vspacer>
-      <vspacer id="bfa6d">
-        <constraints>
-          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-        </constraints>
-      </vspacer>
+        <properties>
+          <font name="Consolas" size="20" style="1"/>
+          <text value="Back"/>
+        </properties>
+      </component>
     </children>
   </grid>
 </form>

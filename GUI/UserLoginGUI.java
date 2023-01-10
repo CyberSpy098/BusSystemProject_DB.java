@@ -1,6 +1,8 @@
 package GUI;
 
 import javax.swing.*;
+import javax.swing.border.Border;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
@@ -16,14 +18,19 @@ public class UserLoginGUI extends JFrame
     private JButton backButton;
     private JPanel pannel;
     private JButton registrationButton;
+    private JLabel username;
+    private JLabel Password;
 
     public UserLoginGUI()
     {
         backButton.setFocusable(false);
         loginButton.setFocusable(false);
 
+        Border line = BorderFactory.createLineBorder(Color.white);
+        username.setBorder(line);
+        Password.setBorder(line);
         add(pannel);
-        setBounds(550,200,850,550);
+        setBounds(400,150,850,550);
 
         backButton.addActionListener(new ActionListener() {
             @Override

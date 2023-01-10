@@ -12,11 +12,12 @@ public class UsersAdminGUI extends JFrame
     private JTable table1;
     private JButton button1;
     private JPanel pannel;
+    private JLabel Title;
 
     public UsersAdminGUI()
     {
         add(pannel);
-        setBounds(550,200,850,550);
+        setBounds(400,150,850,550);
         setTitle("Pakistan Express");
 
         button1.addActionListener(new ActionListener() {

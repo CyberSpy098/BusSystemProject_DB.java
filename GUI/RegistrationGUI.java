@@ -1,6 +1,8 @@
 package GUI;
 
 import javax.swing.*;
+import javax.swing.border.Border;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
@@ -20,15 +22,19 @@ public class RegistrationGUI extends JFrame {
     private JLabel contact;
     private JLabel email;
     private JLabel password;
-    private JLabel title;
 
     public RegistrationGUI()
     {
+        Border line = BorderFactory.createLineBorder(Color.white);
+        name.setBorder(line);
+        contact.setBorder(line);
+        email.setBorder(line);
+        password.setBorder(line);
          backButton.setFocusable(false);
          registerButton.setFocusable(false);
-        setBounds(550,200,850,550);
-        setTitle("Welcome to Pakistan Express");
-        add(pannel);
+         setBounds(400,150,850,550);
+         setTitle("Welcome to Pakistan Express");
+         add(pannel);
 
 
         backButton.addActionListener(new ActionListener() {

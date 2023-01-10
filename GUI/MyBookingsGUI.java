@@ -25,7 +25,7 @@ public class MyBookingsGUI extends JFrame
         Backbutton.setFocusable(false);
         cancelTicketButton.setFocusable(false);
 
-        setBounds(550,200,850,650);
+        setBounds(400,150,850,550);
         Border line = BorderFactory.createLineBorder(Color.white);
         indexlabel.setBorder(line);
 

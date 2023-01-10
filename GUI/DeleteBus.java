@@ -28,7 +28,7 @@ public class DeleteBus extends JFrame
             Backbutton.setFocusable(false);
             deleteButton.setFocusable(false);
 
-            setBounds(550,200,850,650);
+            setBounds(400,150,850,550);
             setTitle("Pakistan Express");
             setBackground(Color.WHITE);
             setVisible(true);

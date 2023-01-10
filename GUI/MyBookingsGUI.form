@@ -83,7 +83,9 @@
             <maximum-size width="210" height="35"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <font name="Consolas" size="18" style="0"/>
+        </properties>
       </component>
       <component id="6e95e" class="javax.swing.JButton" binding="cancelTicketButton" default-binding="true">
         <constraints>

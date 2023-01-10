@@ -22,7 +22,7 @@ public class DeleteRoute extends JFrame
         backButton.setFocusable(false);
         deleteButton.setFocusable(false);
         add(pannel);
-        setBounds(550,200,850,630);
+        setBounds(400,150,850,550);
         setTitle("Pakistan Express");
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

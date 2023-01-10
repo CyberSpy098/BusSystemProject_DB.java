@@ -30,7 +30,7 @@ public class AddBusGUIPannel extends JFrame
     {
 
         add(AddPannel);
-        setBounds(550,200,850,550);
+        setBounds(400,150,850,550);
         Border line = BorderFactory.createLineBorder(Color.white);
         BusNo.setBorder(line);
         Name.setBorder(line);

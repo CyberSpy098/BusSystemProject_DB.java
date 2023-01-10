@@ -1,6 +1,8 @@
 package GUI;
 
 import javax.swing.*;
+import javax.swing.border.Border;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -14,20 +16,26 @@ public class AdminRegistrationGUI extends JFrame {
     private JButton backButton;
     private JLabel name;
     private JLabel contact;
-    private JLabel address;
     private JLabel email;
     private JPanel Pannel;
+    private JLabel Title;
+    private JLabel Password;
 
     public AdminRegistrationGUI()
     {
         add(Pannel);
-        setBounds(550,200,850,550);
-
+        setBounds(400,150,850,550);
+        Border line = BorderFactory.createLineBorder(Color.white);
+        name.setBorder(line);
+        contact.setBorder(line);
+        email.setBorder(line);
+        Password.setBorder(line);
 
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 new AdminGUIPannel().setVisible(true);
+                dispose();
             }
         });
         registerButton.addActionListener(new ActionListener() {

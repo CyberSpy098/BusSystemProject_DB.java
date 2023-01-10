@@ -29,7 +29,7 @@ public class AddRouteGUI extends JFrame
         Addbutton.setFocusable(false);
         backButton.setFocusable(false);
         add(AddRoutePannel);
-        setBounds(550,200,850,550);
+        setBounds(400,150,850,550);
         setTitle("Pakistan Express");
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
