@@ -29,6 +29,7 @@ public class TicketBookingGUI extends JFrame
     private JLabel datelabel;
     private JLabel timelabel;
     private DatePicker date;
+    private JComboBox comboBox1;
 
     public TicketBookingGUI()
     {
@@ -48,6 +49,7 @@ public class TicketBookingGUI extends JFrame
         timelabel.setBorder(line);
         fillComboBox();
         destinationCombo();
+        BusComboBo();
        // destinationCombo();
 
 
@@ -184,6 +186,26 @@ public class TicketBookingGUI extends JFrame
             while (rs.next()) {
                 String data = rs.getString("ROUTE_DESTINATION");
                 FromBox.addItem(data);
+            }
+
+            System.out.println("Data saved successfully!");
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public void BusComboBo()
+    {
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "online_BusReservation", "group");
+            System.out.print("Connection Sucessful");
+
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("Select BUS_MODELYEAR from BUS");
+            while (rs.next()) {
+                String data = rs.getString("BUS_MODELYEAR");
+                comboBox1.addItem(data);
             }
 
             System.out.println("Data saved successfully!");

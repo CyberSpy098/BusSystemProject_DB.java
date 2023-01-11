@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="GUI.TicketBookingGUI">
-  <grid id="27dc6" binding="pannel" layout-manager="GridLayoutManager" row-count="12" column-count="7" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="pannel" layout-manager="GridLayoutManager" row-count="13" column-count="7" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
       <xy x="20" y="20" width="716" height="649"/>
@@ -17,7 +17,7 @@
       </hspacer>
       <vspacer id="9ec5a">
         <constraints>
-          <grid row="11" column="4" row-span="1" col-span="2" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+          <grid row="12" column="4" row-span="1" col-span="2" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
         </constraints>
       </vspacer>
       <grid id="1242b" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
@@ -79,7 +79,7 @@
       </component>
       <component id="bb4e8" class="javax.swing.JButton" binding="Bookbutton">
         <constraints>
-          <grid row="9" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false">
+          <grid row="10" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false">
             <minimum-size width="210" height="35"/>
             <preferred-size width="210" height="35"/>
             <maximum-size width="210" height="35"/>
@@ -92,7 +92,7 @@
       </component>
       <component id="db54b" class="javax.swing.JButton" binding="backbutton">
         <constraints>
-          <grid row="10" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="11" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <font name="Consolas" size="18" style="1"/>
@@ -101,7 +101,7 @@
       </component>
       <hspacer id="66cb7">
         <constraints>
-          <grid row="10" column="5" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="11" column="5" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
       </hspacer>
       <hspacer id="c77e3">
@@ -284,6 +284,27 @@
           <horizontalAlignment value="0"/>
           <text value=" Destination:"/>
         </properties>
+      </component>
+      <component id="8f79f" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="9" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="210" height="35"/>
+            <preferred-size width="210" height="35"/>
+            <maximum-size width="210" height="35"/>
+          </grid>
+        </constraints>
+        <properties>
+          <font name="Consolas" size="18" style="1"/>
+          <foreground color="-855310"/>
+          <horizontalAlignment value="0"/>
+          <text value="BUS:"/>
+        </properties>
+      </component>
+      <component id="bfbb7" class="javax.swing.JComboBox" binding="comboBox1" default-binding="true">
+        <constraints>
+          <grid row="9" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
       </component>
     </children>
   </grid>
